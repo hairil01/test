@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EXPENSES CHART</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    #nav {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    #nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #nav li {
+      float: left;
+    }
+
+    #nav li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    #nav li a:hover {
+      background-color: #111;
+    }
+
+    /* Rest of the CSS styles */
+    #container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 100px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .output {
+      margin-top: 40px;
+    }
+
+    iframe {
+      width: 500px;
+      height: 500px;
+      border: none;
+    }
+  </style>
+</head>
+
+<header>
+  {% include 'header.html' %}
+  {% include 'background.html' %}
+</header>
+
+<body>
+
+  <div id="container">
+    <h1>Expenses Chart</h1>
+
+    <form action="/expenses_chart" method="post" enctype="multipart/form-data">
+      <label for="months">Choose a month:</label>
+      <select name="months" id="months">
+        <option value="" disabled selected>Select Month</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+
+      <br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    <div class="output">
+      {% if chart_file %}
+      <iframe src="{{ url_for('static', filename='expenses_chart.html') }}"></iframe>
+{% endif %}
+      
+    </div>
+  </div>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+</html>

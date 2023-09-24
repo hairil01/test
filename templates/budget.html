@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask App</title>
+    <style>
+        /* Define the snackbar styles */
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 30px; /* Adjust the top position as desired */
+            font-size: 14px;
+        }
+    
+        /* Show the snackbar */
+        #snackbar.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 9.5s;
+        }
+    
+        /* Fade-in animation */
+        @keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+        }
+    
+        /* Fade-out animation */
+        @keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+    </style>
+    
+</head>
+<body>
+    <!--<h1>{{ notification }}</h1> -->
+
+    <!-- Snackbar element -->
+    <div id="snackbar"></div>
+
+    <script>
+       var notification = "{{ notification }}";
+
+        // Show the snackbar
+        var snackbar = document.getElementById('snackbar');
+        snackbar.innerHTML = notification;
+        snackbar.classList.add('show');
+
+        // Apply color based on the notification
+        if (notification.includes("Budget exceeded")) {
+            snackbar.style.backgroundColor = "rgb(247, 5, 5)"; // Red color for exceeded budget
+            snackbar.style.color = "#fff"; // Set text color to white
+        } else {
+            snackbar.style.backgroundColor = "rgb(0, 255, 0)"; // Green color for not exceeded budget
+            snackbar.style.color = "#000"; // Set text color to black
+        }
+
+        // Hide the snackbar after 10 seconds
+        setTimeout(function() {
+            snackbar.classList.remove('show');
+        }, 10000);
+
+
+
+    </script>
+</body>
+</html>

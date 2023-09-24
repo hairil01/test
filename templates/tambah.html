@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ADD EXPENSE</title>
+<style>
+    /* Define the snackbar styles */
+    #snackbar {
+         visibility: hidden;
+         min-width: 250px;
+         margin-left: -125px;
+         margin-top: 70px;
+         color: #fff;
+         text-align: center;
+         border-radius: 2px;
+         padding: 20px;
+         position: fixed;
+         z-index: 1;
+         left: 50%;
+         top: 70px; /* Adjust the top position as desired */
+         font-size: 14px;
+         font-weight: bold;
+     }
+ 
+     /* Show the snackbar */
+     #snackbar.show {
+         visibility: visible;
+         animation: fadein 0.5s, fadeout 0.5s 9.5s;
+     }
+ 
+     /* Fade-in animation */
+     @keyframes fadein {
+         from {top: 0; opacity: 0;}
+         to {top: 30px; opacity: 1;}
+     }
+ 
+     /* Fade-out animation */
+     @keyframes fadeout {
+         from {top: 30px; opacity: 1;}
+         to {top: 0; opacity: 0;}
+     }
+
+     body {
+       font-family: Arial, sans-serif;
+       margin: 0;
+       padding: 0;
+       display: flex;
+       flex-direction: column;
+       min-height: 100vh;
+     }
+ 
+     header {
+       background-color: #333;
+       color: #fff;
+       padding: 20px;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+     }
+ 
+     .logo img {
+       height: 40px;
+       width: auto;
+     }
+ 
+     main {
+       flex-grow: 1;
+       padding: 250px;
+     }
+ 
+     h1 {
+       margin-top: 0;
+     }
+ 
+     .dashboard {
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       grid-gap: 20px;
+       margin-top: 30px;
+     }
+ 
+     .dashboard-item {
+       background-color: #1d3143;
+       border-radius: 5px;
+       padding: 20px;
+       text-align: center;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       transition: transform 0.3s ease-in-out;
+     }
+ 
+     .dashboard-item:hover {
+       transform: translateY(-5px);
+     }
+ 
+     .dashboard-item a {
+       color: #dee2e6;
+       text-decoration: none;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       height: 100%;
+     }
+ 
+     .dashboard-item i {
+       font-size: 40px;
+       margin-bottom: 10px;
+       color: #777;
+     }
+ 
+     .dashboard-item span {
+       font-size: 16px;
+       font-weight: bold;
+       color: #ffffff;
+     }
+
+     footer {
+       background-color: #333;
+       color: #fff;
+       padding: 20px;
+       text-align: center;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+     }
+     
+     .footer-sections {
+       display: flex;
+       justify-content: space-between;
+       flex-wrap: wrap;
+       margin-bottom: 20px;
+     }
+     
+     .footer-section {
+       flex: 1;
+       text-align: left;
+     }
+     
+     .footer-section h2 {
+       font-size: 18px;
+       margin-bottom: 10px;
+     }
+     
+     .footer-section p,
+     .footer-section ul {
+       margin: 0;
+       padding: 0;
+       list-style: none;
+     }
+     
+     .footer-section ul li {
+       margin-bottom: 5px;
+     }
+     
+     .social-icons {
+       margin-bottom: 20px;
+     }
+     
+     .social-icons a {
+       color: #fff;
+       text-decoration: none;
+       margin-right: 10px;
+       font-size: 18px;
+     }
+ 
+     /* Added CSS for positioning the sections */
+     .footer-content {
+       display: flex;
+       flex-direction: column;
+       color: #777;
+     }
+     
+     .footer-sections {
+       align-items: flex-start;
+     }
+ 
+     .footer-section:nth-child(2) {
+       text-align: right;
+     }
+ 
+     /* Added CSS for grey color */
+     .footer-content p {
+       color: #777;
+     }
+     
+     /* Added CSS for logout button */
+     .logout-button {
+       color: #fff;
+       background-color: #333;
+       border: none;
+       border-radius: 5px;
+       padding: 10px 20px;
+       font-size: 14px;
+       text-decoration: none;
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     }
+   
+     .logout-button:hover {
+       background-color: #555;
+     }
+   
+     .logout-button:focus {
+       outline: none;
+       box-shadow: 0 0 0 2px #fff, 0 0 0 4px #333;
+     }
+   </style>
+</head>
+<header>
+  {% include 'header.html' %}
+  {% include 'background.html' %}
+</header>
+
+<main>
+    <div class="dashboard">
+        <div class="dashboard-item">
+            <a href="/ocr">
+              
+                <span>UPLOAD RECEIPT</span>
+            </a>
+        </div>
+        <div class="dashboard-item">
+            <a href="/manual">
+               
+                <span>INSERT SPENDING</span>
+            </a>
+        </div>
+      </div>
+    </div>
+</main>
+
+</html>

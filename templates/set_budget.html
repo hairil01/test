@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SET BUDGET</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 100px;
+            background-color: rgba(255, 255, 255, 0.6); /* Adjust the alpha value (0.8) to your desired transparency */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        select, input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        
+        #nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #nav li {
+            float: left;
+        }
+        
+        #nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        #nav li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<header>
+    {% include 'header.html' %}
+    {% include 'background.html' %}
+    {% if alert_script %}
+    <script type="text/javascript">
+        // Show the success message using JavaScript alert
+        alert("{{ alert_script }}");
+    </script>
+{% endif %}
+</header>
+
+<body>
+
+    <div id="container">
+        <h1>Set Budget</h1>
+        
+        <form action="/set_budget" method="post" enctype="multipart/form-data">
+            <label for="month">Choose a month:</label>
+            <select name="month" id="month">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        
+            <div>
+                <label for="year">Enter a year:</label>
+                <input type="text" id="year" name="year">
+            </div>
+        
+            <div>
+                <label for="amount">Enter amount:</label>
+                <input type="text" id="amount" name="amount">
+            </div>
+        
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
